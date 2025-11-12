@@ -28,8 +28,11 @@ class AlienInvasion:
     def run_game(self):
         #Game loop
         while self.running:
+            #check for input
             self._check_events()
+            #act on input
             self.ship.update()
+            #output result
             self._update_screen()
             self.clock.tick(self.settings.FPS)
 
@@ -63,7 +66,7 @@ class AlienInvasion:
         elif event.key == pygame.K_SPACE:
             if self.ship.fire():
                 self.laser_sound.play()
-                self.laser_sound.fadeout(150)
+                self.laser_sound.fadeout(300  )
         elif event.key == pygame.K_q:
             self.running = False
             pygame.quit()

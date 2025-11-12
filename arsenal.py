@@ -7,6 +7,7 @@ if TYPE_CHECKING:
     from alien_invasion import AlienInvasion
 
 class Arsenal:
+    #manages all the ammunition from the ship
 
     def __init__(self, game: 'AlienInvasion'):
         self.game = game
