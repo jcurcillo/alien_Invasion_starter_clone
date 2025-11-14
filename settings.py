@@ -10,6 +10,7 @@ class Settings:
         self.FPS = 60
         self.bg_file = Path.cwd() / 'Assets' / 'images' / 'replacement_bg.webp'
         self.difficulty_scale = 1.1
+        self.scores_file = Path.cwd() / 'Assets' / 'file' / 'scores.json'
 
         #ship settings
         self.ship_file = Path.cwd() / 'Assets' / 'images' / 'replacement_ship.png'
