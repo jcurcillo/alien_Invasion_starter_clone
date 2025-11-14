@@ -35,7 +35,7 @@ class AlienInvasion:
             self._check_events()
             #act on input
             self.ship.update()
-            # self.alien.update()
+            self.alien_fleet.update_fleet()
             #output result
             self._update_screen()
             self.clock.tick(self.settings.FPS)
