@@ -38,7 +38,7 @@ class AlienFleet:
                 self._create_alien(current_x, current_y)
 
     def calculate_offsets(self, alien_w, alien_h, screen_w, fleet_w, fleet_h):
-        half_screen = self.settings.screen_h//2
+        half_screen = self.settings.screen_h // 2
         fleet_horizontal_space = fleet_w * alien_w
         fleet_vertical_space = fleet_h * alien_h
         x_offset = int((screen_w - fleet_horizontal_space) // 2)
