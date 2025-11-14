@@ -19,6 +19,7 @@ class Settings:
         #bullet settings
         self.bullet_file = Path.cwd() / 'Assets' / 'images' / 'replacement_laser.png'
         self.laser_sound = Path.cwd() / 'Assets' / 'sound' / 'replacement_laser.mp3'
+        self.impact_sound = Path.cwd() / 'Assets' / 'sound' / 'impact.mp3'
         self.bullet_speed = 7
         self.bullet_w = 25
         self.bullet_h = 80
