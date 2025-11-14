@@ -14,7 +14,7 @@ class AlienInvasion:
         pygame.init()
         self.settings = Settings()
         self.settings.initialize_dynamic_settings()
-        self.game_stats = GameStats(self.settings.starting_ship_count)
+        self.game_stats = GameStats(self)
 
         self.screen = pygame.display.set_mode((self.settings.screen_w, self.settings.screen_h))
         pygame.display.set_caption(self.settings.name)
@@ -27,10 +27,10 @@ class AlienInvasion:
 
         pygame.mixer.init()
         self.laser_sound = pygame.mixer.Sound(self.settings.laser_sound)
-        self.laser_sound.set_volume(0.5)
+        self.laser_sound.set_volume(0.2)
 
         self.impact_sound = pygame.mixer.Sound(self.settings.impact_sound)
-        self.impact_sound.set_volume(0.5)
+        self.impact_sound.set_volume(0.2)
 
         self.ship = Ship(self, Arsenal(self))
         self.alien_fleet = AlienFleet(self)
@@ -69,11 +69,12 @@ class AlienInvasion:
         if collisions:
             self.impact_sound.play()
             self.impact_sound.fadeout(500)
+            self.game_stats.update(collisions)
 
         if self.alien_fleet.check_destroyed_status():
             self._reset_level()
             self.settings.increase_difficulty()
-            # update game stats level
+            self.game_stats.update_level()
             # update HUD
 
     def _check_game_status(self):
@@ -92,7 +93,7 @@ class AlienInvasion:
 
     def restart_game(self):
         self.settings.initialize_dynamic_settings()
-        # reset Game Stats
+        self.game_stats.reset_stats()
         # update scores
         self._reset_level()
         self.ship._center_ship()

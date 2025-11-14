@@ -56,7 +56,10 @@ class Settings:
         self.fleet_direction = 1
         self.fleet_drop_speed = self.alien_h / 2
 
+        self.alien_points = 50
+
     def increase_difficulty(self):
         self.ship_speed *= self.difficulty_scale
         self.bullet_speed *= self.difficulty_scale
         self.fleet_speed *= self.difficulty_scale
+
