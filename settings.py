@@ -1,8 +1,20 @@
+"""
+Program Name: settings.py
+Author: Jack Curcillo
+Purpose: Store game and object settings.
+Date: 11/14/2025
+"""
+
 from pathlib import Path
 
 class Settings:
-
+    """
+    Store all game settings: screen, ship, bullet, alien, font, button.
+    """
     def __init__(self):
+        """
+        Init base settings: screen size, assets, colors.
+        """
         #base settings, background
         self.name: str = 'Alien Invasion'
         self.screen_w = 1200
@@ -35,17 +47,20 @@ class Settings:
         #button settings
         self.button_w = 200
         self.button_h = 50
-        self.button_color = (0, 135, 50)
+        self.button_color = (255, 0, 0)
 
         #font settings
         self.text_color = (255, 255, 255)
         self.button_font_size = 48
         self.HUD_font_size = 20
-        self.font_file = Path.cwd() / 'Assets' / 'Fonts' / 'Silkscreen' / 'Silkscreen-Bold.ttf'
+        self.font_file = Path.cwd() / 'Assets' / 'Fonts' / 'replacement_font.ttf'
 
 
     #dynamic
     def initialize_dynamic_settings(self):
+        """
+        Init dynamic settings: ship, bullet, fleet, alien points.
+        """
         self.ship_speed = 5
         self.starting_ship_count = 3
 
@@ -60,6 +75,9 @@ class Settings:
         self.alien_points = 50
 
     def increase_difficulty(self):
+        """
+        Scale ship, bullet, fleet speed by difficulty factor.
+        """
         self.ship_speed *= self.difficulty_scale
         self.bullet_speed *= self.difficulty_scale
         self.fleet_speed *= self.difficulty_scale

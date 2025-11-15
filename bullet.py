@@ -1,3 +1,10 @@
+"""
+Program Name: bullet.py
+Author: Jack Curcillo
+Purpose: Manage ship ammunition.
+Date: 11/14/2025
+"""
+
 import pygame
 from pygame.sprite import Sprite
 from typing import TYPE_CHECKING
@@ -6,8 +13,13 @@ if TYPE_CHECKING:
     from alien_invasion import AlienInvasion
 
 class Bullet(Sprite):
-    #is the base class for ship ammunition
+    """
+    Base class for ship ammunition.
+    """    
     def __init__(self, game: 'AlienInvasion'):
+        """
+        Initialize bullet: link game, settings, set position.
+        """
         super().__init__()
         self.screen = game.screen
         self.settings = game.settings
@@ -20,10 +32,14 @@ class Bullet(Sprite):
         self.y = float(self.rect.y)
 
     def update(self):
-        #moves bullet
+        """
+        Move bullet up screen.
+        """
         self.y -= self.settings.bullet_speed
         self.rect.y = self.y
 
     def draw_bullet(self):
-        #draws the bullet
+        """
+        Draw bullet to screen.
+        """
         self.screen.blit(self.image, self.rect)

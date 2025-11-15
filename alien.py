@@ -1,3 +1,10 @@
+"""
+Program Name: alien.py
+Author: Jack Curcillo
+Purpose: Manage alien behavior.
+Date: 11/14/2025
+"""
+
 import pygame
 from pygame.sprite import Sprite
 from typing import TYPE_CHECKING
@@ -6,8 +13,13 @@ if TYPE_CHECKING:
     from alien_fleet import AlienFleet
 
 class Alien(Sprite):
-    #is the base class for aliens
+    """
+    Base class for aliens.
+    """
     def __init__(self, fleet: 'AlienFleet', x: float, y: float):
+        """
+        Initialize alien: set position, image, settings.
+        """
         super().__init__()
         self.fleet = fleet
         self.screen = fleet.game.screen
@@ -24,7 +36,9 @@ class Alien(Sprite):
         self.y = float(self.rect.y)
 
     def update(self):
-        #moves alien
+        """
+        Move alien horizontally
+        """
         temp_speed = self.settings.fleet_speed
         
         self.x += temp_speed * self.fleet.fleet_direction
@@ -33,8 +47,16 @@ class Alien(Sprite):
 
 
     def check_edges(self):
+        """
+        Check if alien has reached screen edge.
+
+        Returns:
+            bool: True if at left or right edge.
+        """
         return (self.rect.right >= self.boundaries.right or self.rect.left <= self.boundaries.left)
 
     def draw_alien(self):
-        #draws the alien
+        """
+        Draw alien on screen.
+        """
         self.screen.blit(self.image, self.rect)
